@@ -14,7 +14,7 @@
           <img src="skyhook-logo.svg" >
         </v-list-tile-avatar>
         <v-list-tile-content>
-          <v-list-tile-title>SKYHOOK</v-list-tile-title>
+          <v-list-tile-title class="skyhook-title">Skyhook</v-list-tile-title>
         </v-list-tile-content>
         <v-list-tile-action>
           <v-btn
@@ -85,3 +85,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.skyhook-title {
+    font-family: Courier;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 5px !important;
+    margin-left: 6px;
+    text-transform: uppercase;
+}
+</style>

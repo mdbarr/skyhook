@@ -5,7 +5,7 @@
         <v-card class="elevation-12">
           <v-toolbar dark dense color="primary">
             <v-avatar size="40"><img src="skyhook-logo.svg"></v-avatar>
-            <v-toolbar-title>Skyhook</v-toolbar-title>
+            <v-toolbar-title class="skyhook-title">Skyhook</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-form>
@@ -42,6 +42,14 @@ export default {
 </script>
 
 <style scoped>
+.skyhook-title {
+    font-family: Courier;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 5px !important;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
 .container {
     background-image: -webkit-radial-gradient(top, circle farthest-corner, #404040 0%, #303030 80%) !important;
 }
