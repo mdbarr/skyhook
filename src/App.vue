@@ -1,5 +1,6 @@
 <template>
 <v-app id="app" dark>
+<v-progress-linear v-if="false" style="z-index:1000" height="5" color="white" :indeterminate="true" class="ma-0"></v-progress-linear>
   <v-navigation-drawer
      v-if="state.loggedIn"
      :mini-variant.sync="mini"

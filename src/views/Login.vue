@@ -43,6 +43,6 @@ export default {
 
 <style scoped>
 .container {
-    zzzbackground-image: -webkit-radial-gradient(top, circle farthest-corner, #37649D 0%, #3D6FAF 80%) !important;
+    background-image: -webkit-radial-gradient(top, circle farthest-corner, #404040 0%, #303030 80%) !important;
 }
 </style>
