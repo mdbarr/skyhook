@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@mdi/font": "^2.5.94",
+    "codemirror": "^5.39.0",
     "vue": "^2.5.16",
     "vue-cli-plugin-axios": "^0.0.4",
     "vue-cli-plugin-vuetify": "^0.1.6",
