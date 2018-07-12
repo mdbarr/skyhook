@@ -77,6 +77,27 @@ export default {
     }
   },
   mounted () {
+    const vm = this
+    const events = [
+      'beforeChange',
+      'beforeSelectionChange',
+      'blur',
+      'change',
+      'changes',
+      'cursorActivity',
+      'electricInput',
+      'focus',
+      'gutterClick',
+      'gutterContextMenu',
+      'keyHandled',
+      'optionChange',
+      'refresh',
+      'scroll',
+      'scrollCursorIntoView',
+      'update',
+      'viewportChange'
+    ]
+
     this.instance = CodeMirror.fromTextArea(this.$refs.textarea, {
       autoCloseBrackets: true,
       autoCloseTags: true,
@@ -89,7 +110,7 @@ export default {
       keyMap: 'emacs',
       lineNumbers: true,
       lineWrapping: true,
-      lint: true,
+      lint: false,
       matchBrackets: true,
       matchTags: true,
       mode: 'javascript',
@@ -101,6 +122,13 @@ export default {
       tabSize: 2,
       theme: 'lesser-dark'
     })
+
+    for (const event of events) {
+      vm.instance.on(event, function (...args) {
+        const eventName = event.replace(/([A-Z])/g, '-$1').toLowerCase()
+        vm.$emit(eventName, ...args)
+      })
+    }
   }
 }
 </script>
