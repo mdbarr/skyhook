@@ -26,7 +26,7 @@
       </v-list-tile>
       <v-list-tile @click.stop="navigate('library')">
         <v-list-tile-action>
-          <v-icon>mdi-library-books</v-icon>
+          <v-icon>mdi-json</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>Shared Code</v-list-tile-title>
@@ -40,15 +40,23 @@
           <v-list-tile-title>Persistent Data</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile @click.stop="navigate('webhooks')">
+      <v-list-tile @click.stop="navigate('endpoints')">
         <v-list-tile-action>
           <v-icon>mdi-webhook</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>Webhooks</v-list-tile-title>
+          <v-list-tile-title>Endpoints</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile @click.stop="navigate('settings')">
+       <v-list-tile @click.stop="navigate('tools')">
+        <v-list-tile-action>
+          <v-icon>mdi-toolbox</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title>Available Tools</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+       <v-list-tile @click.stop="navigate('settings')">
         <v-list-tile-action>
           <v-icon>settings</v-icon>
         </v-list-tile-action>
@@ -71,11 +79,11 @@
     <v-badge bottom color="red" overlap>
       <span slot="badge">3</span>
       <v-btn icon>
-        <v-icon>notifications</v-icon>
+        <v-icon>mdi-lighthouse</v-icon>
       </v-btn>
     </v-badge>
     <v-btn flat>
-      Mark &nbsp; <v-icon>person</v-icon>
+      Mark &nbsp; <v-icon>mdi-account-circle</v-icon>
     </v-btn>
   </v-toolbar>
 </v-content>
