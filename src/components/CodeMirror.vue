@@ -1,7 +1,7 @@
 <template>
 <div class="skyhook-codemirror">
   <textarea ref="textarea" :placeholder="placeholder"></textarea>
-  <v-icon>{{ cleanIcon }}</v-icon>
+ <v-icon>mdi-fullscreen</v-icon> <v-icon>{{ lintedIcon }}</v-icon> <v-icon v-if="fixable" @click.stop="fix">mdi-auto-fix</v-icon>
 </div>
 </template>
 
@@ -18,12 +18,11 @@ import 'codemirror/addon/dialog/dialog'
 
 import 'codemirror/addon/display/fullscreen.css'
 import 'codemirror/addon/display/fullscreen'
+import 'codemirror/addon/display/panel'
 import 'codemirror/addon/display/placeholder'
 
 import 'codemirror/addon/edit/closebrackets'
-import 'codemirror/addon/edit/closetag'
 import 'codemirror/addon/edit/matchbrackets'
-import 'codemirror/addon/edit/matchtags'
 import 'codemirror/addon/edit/trailingspace'
 
 import 'codemirror/addon/fold/brace-fold'
@@ -36,8 +35,6 @@ import 'codemirror/addon/hint/javascript-hint'
 import 'codemirror/addon/hint/show-hint.css'
 import 'codemirror/addon/hint/show-hint'
 
-import 'codemirror/addon/lint/javascript-lint'
-import 'codemirror/addon/lint/json-lint'
 import 'codemirror/addon/lint/lint.css'
 import 'codemirror/addon/lint/lint'
 
@@ -92,7 +89,6 @@ const eslintConfig = {
     'no-trailing-spaces': 'error',
     'comma-dangle': ['error', 'never'],
     'no-multi-spaces': 'error',
-    'eol-last': 'error',
     'quotes': ['error', 'single', {
       'avoidEscape': true
     }],
@@ -214,11 +210,17 @@ function validator (text, options, instance) {
     }
 
     const errors = linter.verify(text, eslintConfig)
+    console.log(errors)
 
     const results = []
 
-    for (let i = 0; i < errors.length; i++) {
-      const error = errors[i]
+    let fixable = false
+
+    for (const error of errors) {
+      if (error.fix) {
+        fixable = true
+      }
+
       results.push({
         message: error.message,
         severity: getSeverity(error),
@@ -228,7 +230,8 @@ function validator (text, options, instance) {
     }
 
     if (instance.vue) {
-      instance.vue.clean = results.length === 0
+      instance.vue.linted = results.length === 0
+      instance.vue.fixable = fixable
     }
 
     return results
@@ -238,7 +241,6 @@ function validator (text, options, instance) {
 CodeMirror.registerHelper('lint', 'javascript', validator)
 
 // Component
-
 export default {
   name: 'codemirror',
   props: {
@@ -250,10 +252,10 @@ export default {
     value: String
   },
   computed: {
-    cleanIcon () {
-      if (this.clean === true) {
+    lintedIcon () {
+      if (this.linted === true) {
         return 'mdi-checkbox-multiple-marked-circle'
-      } else if (this.clean === false) {
+      } else if (this.linted === false) {
         return 'mdi-checkbox-multiple-blank-circle'
       } else {
         return 'mdi-checkbox-multiple-blank-circle-outline'
@@ -262,12 +264,19 @@ export default {
   },
   data () {
     return {
-      clean: null,
+      fixable: false,
+      linted: null,
       content: '',
       instance: null
     }
   },
   methods: {
+    fix () {
+      let content = this.instance.getValue()
+      const result = linter.verifyAndFix(content, eslintConfig)
+      console.log(result)
+      this.instance.setValue(result.output)
+    }
   },
   mounted () {
     const vm = this
@@ -336,6 +345,6 @@ export default {
 
 <style scoped>
 .skyhook-codemirror {
-    width: 100%
+    width: 100%;
 }
 </style>
