@@ -2,7 +2,9 @@ function Store () {
   const self = this
 
   self.state = {
-    loggedIn: false
+    loggedIn: false,
+    name: 'Mark',
+    notifications: 0
   }
 
   return self

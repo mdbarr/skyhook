@@ -77,13 +77,13 @@
     </v-btn>
 
     <v-badge bottom color="red" overlap>
-      <span slot="badge">3</span>
+      <span v-if="state.notifications" slot="badge">{{ state.notifications }}</span>
       <v-btn icon>
         <v-icon>mdi-lighthouse</v-icon>
       </v-btn>
     </v-badge>
     <v-btn flat>
-      Mark &nbsp; <v-icon>mdi-account-circle</v-icon>
+      {{ state.name }} &nbsp; <v-icon>mdi-account-circle</v-icon>
     </v-btn>
   </v-toolbar>
 </v-content>

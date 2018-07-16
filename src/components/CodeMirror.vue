@@ -1,7 +1,11 @@
 <template>
 <div class="skyhook-codemirror">
   <textarea ref="textarea" :placeholder="placeholder"></textarea>
- <v-icon>mdi-fullscreen</v-icon> <v-icon>{{ lintedIcon }}</v-icon> <v-icon v-if="fixable" @click.stop="fix">mdi-auto-fix</v-icon>
+  <div id="skyhook-codemirror-panel" name="panel" class="skyhook-codemirror-panel pl-1">
+      <v-icon >{{ lintedIcon }}</v-icon>
+      <v-icon v-if="fixable" @click.stop="fix">mdi-auto-fix</v-icon>
+      <v-icon @click.stop="toggleFullscreen">mdi-fullscreen</v-icon>
+  </div>
 </div>
 </template>
 
@@ -266,6 +270,7 @@ export default {
     return {
       fixable: false,
       linted: null,
+      panel: null,
       content: '',
       instance: null
     }
@@ -276,6 +281,12 @@ export default {
       const result = linter.verifyAndFix(content, eslintConfig)
       console.log(result)
       this.instance.setValue(result.output)
+    },
+    toggleFullscreen () {
+      const fullscreen = this.instance.getOption('fullScreen')
+      console.log('fullScreen', fullscreen)
+      this.instance.setOption('fullScreen', !fullscreen)
+      this.panel.classList.toggle('skyhook-codemirror-panel-fullscreen')
     }
   },
   mounted () {
@@ -339,12 +350,37 @@ export default {
         vm.$emit(eventName, ...args)
       })
     }
+
+    this.panel = document.getElementById('skyhook-codemirror-panel')
+    this.instance.addPanel(this.panel, {
+      position: 'bottom',
+      stable: true
+    })
   }
 }
 </script>
 
-<style scoped>
+<style>
 .skyhook-codemirror {
     width: 100%;
+}
+.skyhook-codemirror-panel {
+    box-sizing: border-box;
+    background-color: #0073b1;
+    border-radius: 0 0 5px 5px;
+    height: 26px;
+    width: 100%;
+    padding-top: 1px;
+}
+.skyhook-codemirror-panel-fullscreen {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 !important;
+}
+
+.CodeMirror-fullscreen {
+    margin-bottom: 26px;
 }
 </style>
