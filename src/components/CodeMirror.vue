@@ -1,10 +1,10 @@
 <template>
 <div class="skyhook-codemirror">
   <textarea ref="textarea" :placeholder="placeholder"></textarea>
-  <div id="skyhook-codemirror-panel" name="panel" class="skyhook-codemirror-panel pl-1">
-      <v-icon >{{ lintedIcon }}</v-icon>
-      <v-icon v-if="fixable" @click.stop="fix">mdi-auto-fix</v-icon>
-      <v-icon @click.stop="toggleFullscreen">mdi-fullscreen</v-icon>
+  <div id="skyhook-codemirror-panel" class="skyhook-codemirror-panel">
+    <i :class="lintedIcon"></i>
+    <i class="mdi md-auto-fix skyhook-clickable" v-if="fixable" @click.stop="fix"></i>
+    <i :class="fullscreenIcon" @click.stop="toggleFullscreen"></i>
   </div>
 </div>
 </template>
@@ -256,23 +256,31 @@ export default {
     value: String
   },
   computed: {
+    fullscreenIcon () {
+      let icon = 'skyhook-clickable skyhook-codemirror-panel-button-fullscreen mdi mdi-fullscreen'
+      if (this.fullscreen) {
+        icon += '-exit'
+      }
+      return icon
+    },
     lintedIcon () {
       if (this.linted === true) {
-        return 'mdi-checkbox-multiple-marked-circle'
+        return 'mdi mdi-checkbox-multiple-marked-circle'
       } else if (this.linted === false) {
-        return 'mdi-checkbox-multiple-blank-circle'
+        return 'mdi mdi-checkbox-multiple-blank-circle'
       } else {
-        return 'mdi-checkbox-multiple-blank-circle-outline'
+        return 'mdi mdi-checkbox-multiple-blank-circle-outline'
       }
     }
   },
   data () {
     return {
-      fixable: false,
-      linted: null,
-      panel: null,
       content: '',
-      instance: null
+      fixable: false,
+      fullscreen: false,
+      instance: null,
+      linted: null,
+      panel: null
     }
   },
   methods: {
@@ -283,9 +291,8 @@ export default {
       this.instance.setValue(result.output)
     },
     toggleFullscreen () {
-      const fullscreen = this.instance.getOption('fullScreen')
-      console.log('fullScreen', fullscreen)
-      this.instance.setOption('fullScreen', !fullscreen)
+      this.fullscreen = !this.instance.getOption('fullScreen')
+      this.instance.setOption('fullScreen', this.fullscreen)
       this.panel.classList.toggle('skyhook-codemirror-panel-fullscreen')
     }
   },
@@ -365,12 +372,16 @@ export default {
     width: 100%;
 }
 .skyhook-codemirror-panel {
+    position: relative;
     box-sizing: border-box;
     background-color: #0073b1;
     border-radius: 0 0 5px 5px;
-    height: 26px;
+    height: 24px;
     width: 100%;
     padding-top: 1px;
+    font-size: 20px;
+    line-height: 24px;
+    padding-left: 5px;
 }
 .skyhook-codemirror-panel-fullscreen {
     position: fixed;
@@ -379,8 +390,11 @@ export default {
     left: 0;
     border-radius: 0 !important;
 }
-
+.skyhook-codemirror-panel-button-fullscreen {
+    position: absolute;
+    right: 5px;
+}
 .CodeMirror-fullscreen {
-    margin-bottom: 26px;
+    margin-bottom: 24px;
 }
 </style>
