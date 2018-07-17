@@ -3,7 +3,7 @@
   <textarea ref="textarea" :placeholder="placeholder"></textarea>
   <div id="skyhook-codemirror-panel" class="skyhook-codemirror-panel">
     <i :class="lintedIcon"></i>
-    <i class="mdi md-auto-fix skyhook-clickable" v-if="fixable" @click.stop="fix"></i>
+    <i class="mdi mdi-auto-fix skyhook-clickable" v-if="fixable" @click.stop="fix"></i>
     <i :class="fullscreenIcon" @click.stop="toggleFullscreen"></i>
   </div>
 </div>
@@ -214,7 +214,6 @@ function validator (text, options, instance) {
     }
 
     const errors = linter.verify(text, eslintConfig)
-    console.log(errors)
 
     const results = []
 
@@ -224,7 +223,6 @@ function validator (text, options, instance) {
       if (error.fix) {
         fixable = true
       }
-
       results.push({
         message: error.message,
         severity: getSeverity(error),
@@ -285,15 +283,18 @@ export default {
   },
   methods: {
     fix () {
+      const cursor = this.instance.getCursor()
       let content = this.instance.getValue()
       const result = linter.verifyAndFix(content, eslintConfig)
-      console.log(result)
       this.instance.setValue(result.output)
+      this.instance.setCursor(cursor)
+      this.instance.focus()
     },
     toggleFullscreen () {
       this.fullscreen = !this.instance.getOption('fullScreen')
       this.instance.setOption('fullScreen', this.fullscreen)
       this.panel.classList.toggle('skyhook-codemirror-panel-fullscreen')
+      this.instance.focus()
     }
   },
   mounted () {
