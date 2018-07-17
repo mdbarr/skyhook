@@ -1,23 +1,29 @@
 <template>
 <div class="skyhook-codemirror">
   <div class="skyhook-codemirror-title">
-    <div style="border-radius: 5px 5px 0 0; padding: 0 20px 2px 10px; display: inline-block; width: auto; background-color: #262626; font-weight: 500;">
-      <slot name="title">
-        <i class="mdi mdi-nodejs" style="padding-right: 5px; font-size: 18px; position: relative; bottom: -2px;;"></i> JavaScript
+    <div style="border-radius: 5px 5px 0 0; padding: 0 10px 2px 10px; display: inline-block; width: auto; background-color: #262626; font-weight: 500; height: 30px;">
+      <slot>
+        <i class="mdi mdi-nodejs" style="padding-right: 5px; font-size: 18px; position: relative; bottom: -2px;"></i> JavaScript
       </slot>
       <div style="display: inline-block; width: 5px;">
         <span v-if="!clean">*</span>
       </div>
     </div>
-    <div style="display: inline-block; font-size: 18px;">
-      <i class="mdi mdi-content-save skyhook-clickable"></i>
-    </div>
   </div>
-  <textarea ref="textarea" :placeholder="placeholder"></textarea>
-  <div id="skyhook-codemirror-panel" class="skyhook-codemirror-panel">
-    <i :class="lintedIcon"></i>
-    <i class="mdi mdi-auto-fix skyhook-clickable" v-if="fixable" @click.stop="fix"></i>
-    <i :class="fullscreenIcon" @click.stop="toggleFullscreen"></i>
+  <div class="skyhook-codemirror-editor">
+    <textarea ref="textarea" :placeholder="placeholder"></textarea>
+    <div id="skyhook-codemirror-panel" class="skyhook-codemirror-panel">
+      <div class="skyhook-codemirror-panel-left">
+        <i :class="lintedIcon"></i>
+        <i class="mdi mdi-auto-fix skyhook-clickable" v-if="fixable" @click.stop="fix"></i>
+      </div>
+      <div class="skyhook-codemirror-panel-center">
+        <i class="mdi mdi-drag-horizontal skyhook-clickable" @click.stop="fix"></i>
+      </div>
+      <div class="skyhook-codemirror-panel-right">
+        <i :class="fullscreenIcon" @click.stop="toggleFullscreen"></i>
+      </div>
+    </div>
   </div>
 </div>
 </template>
@@ -268,7 +274,7 @@ export default {
   },
   computed: {
     fullscreenIcon () {
-      let icon = 'skyhook-clickable skyhook-codemirror-panel-button-fullscreen mdi mdi-fullscreen'
+      let icon = 'skyhook-clickable mdi mdi-fullscreen'
       if (this.fullscreen) {
         icon += '-exit'
       }
@@ -384,7 +390,11 @@ export default {
 
 <style>
 .skyhook-codemirror {
+    height: 100%;
     width: 100%;
+}
+.skyhook-codemirror-title {
+    height: 30px;
 }
 .skyhook-codemirror-panel {
     position: relative;
@@ -405,9 +415,29 @@ export default {
     left: 0;
     border-radius: 0 !important;
 }
-.skyhook-codemirror-panel-button-fullscreen {
-    position: absolute;
-    right: 5px;
+.skyhook-codemirror-panel-left {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 33%;
+    text-align: left;
+    padding-left: 4px;
+}
+.skyhook-codemirror-panel-center {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 33%;
+    text-align: center;
+}
+.skyhook-codemirror-panel-right {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 34%;
+    text-align: right;
+    padding-right: 4px;
+}
+
+.CodeMirror {
+    min-height: 300px;
 }
 .CodeMirror-fullscreen {
     margin-bottom: 24px;

@@ -1,6 +1,6 @@
 <template>
-<v-content>
-  <v-navigation-drawer :mini-variant.sync="mini" v-model="drawer" fixed app>
+<div>
+  <v-navigation-drawer :mini-variant.sync="mini" v-model="drawer" fixed app style="z-index: 6">
     <v-list dense>
       <v-list-tile avatar>
         <v-list-tile-avatar class="skyhook-drawer-icon">
@@ -66,7 +66,8 @@
       </v-list-tile>
     </v-list>
   </v-navigation-drawer>
-  <v-toolbar app fixed dense color="primary">
+
+  <v-toolbar app fixed dense color="primary" style="z-index: 5">
     <v-toolbar-title>
       <slot name="title"></slot>
     </v-toolbar-title>
@@ -86,7 +87,7 @@
       {{ state.name }} &nbsp; <v-icon>mdi-account-circle</v-icon>
     </v-btn>
   </v-toolbar>
-</v-content>
+</div>
 </template>
 
 <script>
