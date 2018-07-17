@@ -374,7 +374,7 @@ export default {
 .skyhook-codemirror-panel {
     position: relative;
     box-sizing: border-box;
-    background-color: #0073b1;
+    background-color: #4A73B2;
     border-radius: 0 0 5px 5px;
     height: 24px;
     width: 100%;

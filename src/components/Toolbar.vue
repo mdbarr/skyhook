@@ -117,7 +117,7 @@ export default {
 }
 
 .skyhook-title {
-    font-family: Courier;
+    font-family: 'Roboto Slab', Courier, serif;
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 5px !important;
