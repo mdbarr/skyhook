@@ -23,6 +23,7 @@ export default {
     cursor: pointer;
 }
 .skyhook-clickable:hover {
+    box-sizing: border-box;
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
 </style>

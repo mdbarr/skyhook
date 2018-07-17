@@ -1,5 +1,18 @@
 <template>
 <div class="skyhook-codemirror">
+  <div class="skyhook-codemirror-title">
+    <div style="border-radius: 5px 5px 0 0; padding: 0 20px 2px 10px; display: inline-block; width: auto; background-color: #262626; font-weight: 500;">
+      <slot name="title">
+        <i class="mdi mdi-nodejs" style="padding-right: 5px; font-size: 18px; position: relative; bottom: -2px;;"></i> JavaScript
+      </slot>
+      <div style="display: inline-block; width: 5px;">
+        <span v-if="!clean">*</span>
+      </div>
+    </div>
+    <div style="display: inline-block; font-size: 18px;">
+      <i class="mdi mdi-content-save skyhook-clickable"></i>
+    </div>
+  </div>
   <textarea ref="textarea" :placeholder="placeholder"></textarea>
   <div id="skyhook-codemirror-panel" class="skyhook-codemirror-panel">
     <i :class="lintedIcon"></i>
@@ -273,6 +286,7 @@ export default {
   },
   data () {
     return {
+      clean: true,
       content: '',
       fixable: false,
       fullscreen: false,
