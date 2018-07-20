@@ -76,6 +76,62 @@ function Models(skyhook) {
     return model;
   };
 
+  ////////////////////
+  // User
+
+  self.user = function({
+    _id, email, password, username, fullName, avatar, account
+  }) {
+    const model = {
+      _id: _id || skyhook.store.generateId(),
+      object: 'user',
+      email,
+      password,
+      username,
+      fullName,
+      avatar: avatar || null,
+      account
+    };
+
+    return model;
+  };
+
+  ////////////////////
+  // Account
+  self.account = function({
+    _id, user, code, data, features, lambdas, logs
+  }) {
+    const model = {
+      _id: _id || skyhook.store.generateId(),
+      object: 'account',
+      user: skyhook.util.id(user),
+      code: code || '',
+      data,
+      features: features || [],
+      lambdas: lambdas || [],
+      logs
+    };
+
+    return model;
+  };
+
+  ////////////////////
+  // Lambda
+
+  self.lambda = function({
+    _id, account, name, code
+  }) {
+    const model = {
+      _id: _id || skyhook.store.generateId(),
+      object: 'lambda',
+      account: skyhook.util.id(account),
+      name: name || '',
+      code: code || ''
+    };
+
+    return model;
+  };
+
   return self;
 }
 

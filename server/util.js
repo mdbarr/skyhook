@@ -99,6 +99,10 @@ function Util(skyhook) {
     return new RegExp('^' + string.replace(escapePattern, '\\$&') + '$');
   };
 
+  self.id = function(value) {
+    return (typeof value === 'object') ? (value._id || value.id) : value;
+  };
+
   ////////////////////
   // Shims
 
