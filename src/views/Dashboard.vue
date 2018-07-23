@@ -17,7 +17,7 @@
           <v-card class="elevation-20">
             <v-card-text>
               <codemirror>
-                <i class="mdi mdi-json" style="padding-right: 5px; font-size: 18px; position: relative; bottom: -2px;"></i> Shared Code
+                <i class="mdi mdi-json skyhook-codemirror-title-icon"></i> Shared Code
               </codemirror>
             </v-card-text>
             <v-card-actions>

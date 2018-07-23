@@ -1,9 +1,9 @@
 <template>
 <div class="skyhook-codemirror">
   <div class="skyhook-codemirror-title">
-    <div style="border-radius: 5px 5px 0 0; padding: 0 10px 2px 10px; display: inline-block; width: auto; background-color: #262626; font-weight: 500; height: 30px;">
+    <div class="skyhook-codemirror-title-tab">
       <slot>
-        <i class="mdi mdi-nodejs" style="padding-right: 5px; font-size: 18px; position: relative; bottom: -2px;"></i> JavaScript
+        <i class="mdi mdi-nodejs skyhook-codemirror-title-icon"></i> JavaScript
       </slot>
       <div style="display: inline-block; width: 5px;">
         <span v-if="!clean">*</span>
@@ -393,13 +393,28 @@ export default {
     height: 100%;
     width: 100%;
 }
+.skyhook-codemirror-title-icon {
+    padding-right: 5px;
+    font-size: 18px;
+    position: relative;
+    bottom: -2px;
+}
 .skyhook-codemirror-title {
+    height: 30px;
+}
+.skyhook-codemirror-title-tab {
+    border-radius: 5px 5px 0 0;
+    padding: 0 10px 2px 10px;
+    display: inline-block;
+    width: auto;
+    background-color: #262626;
+    font-weight: 500;
     height: 30px;
 }
 .skyhook-codemirror-panel {
     position: relative;
     box-sizing: border-box;
-    background-color: #4A73B2;
+    background-color: #0073b1;
     border-radius: 0 0 5px 5px;
     height: 24px;
     width: 100%;

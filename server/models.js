@@ -106,7 +106,7 @@ function Models(skyhook) {
       object: 'account',
       user: skyhook.util.id(user),
       code: code || '',
-      data,
+      data || {},
       features: features || [],
       lambdas: lambdas || [],
       logs
@@ -119,11 +119,12 @@ function Models(skyhook) {
   // Lambda
 
   self.lambda = function({
-    _id, account, name, code
+    _id, endpoint, account, name, code
   }) {
     const model = {
       _id: _id || skyhook.store.generateId(),
       object: 'lambda',
+      endpoint: endpoint || skyhook.store.generateId(),
       account: skyhook.util.id(account),
       name: name || '',
       code: code || ''
