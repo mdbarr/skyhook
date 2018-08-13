@@ -24,7 +24,7 @@
           <v-list-tile-title>Dashboard</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile @click.stop="navigate('library')">
+      <v-list-tile @click.stop="navigate('shared-code')">
         <v-list-tile-action>
           <v-icon>mdi-json</v-icon>
         </v-list-tile-action>
@@ -32,7 +32,7 @@
           <v-list-tile-title>Shared Code</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile @click.stop="navigate('database')">
+      <v-list-tile @click.stop="navigate('persistent-data')">
         <v-list-tile-action>
           <v-icon>mdi-database</v-icon>
         </v-list-tile-action>
@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     navigate (where) {
-      console.log('GOING', where)
+      this.$router.push({ name: where })
     }
   }
 }

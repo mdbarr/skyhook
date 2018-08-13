@@ -106,7 +106,7 @@ function Models(skyhook) {
       object: 'account',
       user: skyhook.util.id(user),
       code: code || '',
-      data || {},
+      data: data || {},
       features: features || [],
       lambdas: lambdas || [],
       logs
