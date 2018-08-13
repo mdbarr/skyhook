@@ -118,10 +118,10 @@ export default {
 }
 
 .skyhook-title {
-    font-family: 'Roboto Slab', Courier, serif;
+    font-family: 'Atomic Age', Courier, serif;
     font-size: 22px;
     font-weight: 700;
-    letter-spacing: 5px !important;
+    letter-spacing: 7px !important;
     margin-left: 6px;
     text-transform: uppercase;
 }

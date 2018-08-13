@@ -43,11 +43,11 @@ export default {
 
 <style scoped>
 .skyhook-title {
-    font-family: 'Roboto Slab', Courier, serif;
+    font-family: 'Atomic Age', Courier, serif;
     font-size: 28px;
     font-weight: 700;
-    letter-spacing: 5px !important;
-    margin-left: 10px;
+    letter-spacing: 10px !important;
+    margin-left: 16px;
     text-transform: uppercase;
 }
 .container {
