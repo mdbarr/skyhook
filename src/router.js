@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Dashboard from './views/Dashboard.vue'
-import SharedCode from './views/SharedCode.vue'
-import PersistentData from './views/PersistentData'
-import Endpoints from './views/Endpoints.vue'
-import Tools from './views/Tools.vue'
-import Settings from './views/Settings.vue'
 import Login from './views/Login.vue'
+
+import Dashboard from './views/Dashboard.vue'
+import Library from './views/Library.vue'
+import Datastore from './views/Datastore'
+import Endpoints from './views/Endpoints.vue'
+import Modules from './views/Modules.vue'
+import Vault from './views/Vault.vue'
+import Settings from './views/Settings.vue'
 
 import store from './store'
 
@@ -22,14 +24,14 @@ const router = new Router({
       component: Dashboard
     },
     {
-      path: '/code',
-      name: 'shared-code',
-      component: SharedCode
+      path: '/library',
+      name: 'library',
+      component: Library
     },
     {
-      path: '/data',
-      name: 'persistent-data',
-      component: PersistentData
+      path: '/datastore',
+      name: 'datastore',
+      component: Datastore
     },
     {
       path: '/endpoints',
@@ -37,9 +39,14 @@ const router = new Router({
       component: Endpoints
     },
     {
-      path: '/tools',
-      name: 'tools',
-      component: Tools
+      path: '/modules',
+      name: 'modules',
+      component: Modules
+    },
+    {
+      path: '/vault',
+      name: 'vault',
+      component: Vault
     },
     {
       path: '/settings',

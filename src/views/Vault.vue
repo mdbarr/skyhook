@@ -1,7 +1,7 @@
  sdb<template>
 <div>
   <skyhook-toolbar>
-    <span slot="title"><v-icon>mdi-json</v-icon> Shared Code</span>
+    <span slot="title"><v-icon>mdi-safe</v-icon> Vault</span>
   </skyhook-toolbar>
   <v-content>
     <v-container fluid fill-height grid-list-md>
@@ -27,7 +27,7 @@ import store from '../store'
 import Toolbar from '../components/Toolbar.vue'
 
 export default {
-  name: 'skyhook-shared-code',
+  name: 'skyhook-tools',
   components: {
     'skyhook-toolbar': Toolbar
   },

@@ -1,7 +1,7 @@
  sdb<template>
 <div>
   <skyhook-toolbar>
-    <span slot="title"><v-icon>settings</v-icon> Settings</span>
+    <span slot="title"><v-icon>mdi-settings-outline</v-icon> Settings</span>
   </skyhook-toolbar>
   <v-content>
     <v-container fluid fill-height grid-list-md>

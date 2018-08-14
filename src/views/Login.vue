@@ -35,7 +35,7 @@ export default {
   methods: {
     login () {
       this.state.loggedIn = true
-      this.$router.push({ name: 'dashboard' })
+      this.$router.replace({ name: 'dashboard' })
     }
   }
 }

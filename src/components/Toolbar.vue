@@ -18,26 +18,26 @@
       <v-divider></v-divider>
       <v-list-tile @click.stop="navigate('dashboard')">
         <v-list-tile-action>
-          <v-icon>mdi-view-dashboard-outline</v-icon>
+          <v-icon>mdi-view-dashboard</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>Dashboard</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile @click.stop="navigate('shared-code')">
+      <v-list-tile @click.stop="navigate('library')">
         <v-list-tile-action>
-          <v-icon>mdi-json</v-icon>
+          <v-icon>mdi-book-open-variant</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>Shared Code</v-list-tile-title>
+          <v-list-tile-title>Library</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile @click.stop="navigate('persistent-data')">
+      <v-list-tile @click.stop="navigate('datastore')">
         <v-list-tile-action>
-          <v-icon>mdi-database</v-icon>
+          <v-icon>mdi-store</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>Persistent Data</v-list-tile-title>
+          <v-list-tile-title>Datastore</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
       <v-list-tile @click.stop="navigate('endpoints')">
@@ -48,17 +48,25 @@
           <v-list-tile-title>Endpoints</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-       <v-list-tile @click.stop="navigate('tools')">
+      <v-list-tile @click.stop="navigate('modules')">
         <v-list-tile-action>
-          <v-icon>mdi-toolbox</v-icon>
+          <v-icon>mdi-cube-outline</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>Available Tools</v-list-tile-title>
+          <v-list-tile-title>Modules</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-       <v-list-tile @click.stop="navigate('settings')">
+      <v-list-tile @click.stop="navigate('vault')">
         <v-list-tile-action>
-          <v-icon>settings</v-icon>
+          <v-icon>mdi-safe</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title>Vault</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-list-tile @click.stop="navigate('settings')">
+        <v-list-tile-action>
+          <v-icon>mdi-settings-outline</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>Settings</v-list-tile-title>

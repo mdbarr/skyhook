@@ -1,7 +1,7 @@
  sdb<template>
 <div>
   <skyhook-toolbar>
-    <span slot="title"><v-icon>mdi-database</v-icon> Persistent Data</span>
+    <span slot="title"><v-icon>mdi-cube-outline</v-icon> Modules</span>
   </skyhook-toolbar>
   <v-content>
     <v-container fluid fill-height grid-list-md>
@@ -27,7 +27,7 @@ import store from '../store'
 import Toolbar from '../components/Toolbar.vue'
 
 export default {
-  name: 'skyhook-persistent-data',
+  name: 'skyhook-tools',
   components: {
     'skyhook-toolbar': Toolbar
   },
