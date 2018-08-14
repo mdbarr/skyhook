@@ -81,19 +81,28 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
 
-    <v-btn icon>
-      <v-icon>search</v-icon>
-    </v-btn>
-
     <v-badge bottom color="red" overlap>
       <span v-if="state.notifications" slot="badge">{{ state.notifications }}</span>
       <v-btn icon>
         <v-icon>mdi-lighthouse</v-icon>
       </v-btn>
     </v-badge>
-    <v-btn flat>
-      {{ state.name }} &nbsp; <v-icon>mdi-account-circle</v-icon>
-    </v-btn>
+    <v-menu offset-y>
+      <v-btn slot="activator" flat>
+        {{ state.name }} &nbsp; <v-icon>mdi-account-circle</v-icon>
+      </v-btn>
+      <v-list>
+        <v-list-tile @click="navigate('profile')">
+          <v-list-tile-title>Your Profile</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile @click="navigate('settings')">
+          <v-list-tile-title>Settings</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile @click="logout()">
+          <v-list-tile-title>Logout</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
   </v-toolbar>
 </div>
 </template>
