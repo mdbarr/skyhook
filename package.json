@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@mdi/font": "^3.8.95",
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "barrkeep": "^2.2.3",
     "codemirror": "^5.48.0",
     "mongodb": "^3.2.7",
